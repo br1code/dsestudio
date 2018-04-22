@@ -1,7 +1,13 @@
 const express               = require("express"),
     bodyParser              = require("body-parser"),
     methodOverride          = require("method-override"),
-    mongoose                = require("mongoose");
+    mongoose                = require("mongoose"),
+    passport                = require("passport"),
+    LocalStrategy           = require("passport-local"),
+    passportLocalMongoose   = require("passport-local-mongoose"),
+    expressSession          = require("express-session"),
+    middleware              = require("./extras/middleware"),
+    User                    = require("./models/user");
 
 // Routes
 const indexRoutes           = require("./routes/index"),
@@ -25,6 +31,23 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
+
+// Passport configuration
+const sessionConfig = {
+    secret: "the most encrypted secret in the world",
+    resave: false,
+    saveUninitialized: false
+};
+
+app.use(expressSession(sessionConfig));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Custom middleware to provide currentUser and flash messages to all routes
+app.use(middleware.currentUser);
 
 // Routes configuration
 app.use(indexRoutes);

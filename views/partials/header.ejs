@@ -11,13 +11,16 @@
 <body>
     <div class="ui top fixed inverted menu" id="nav">
         <a href="/" class="header item">DS Estudio</a>
+        <a href="/post/new" class="item">Escribe un post</a>
         <a href="/category" class="item">Categorias</a>
-        <a href="/" class="item">Alumnos</a>
         <a href="/teacher" class="item">Profesores</a>
-        <a href="/" class="item">Contribuir</a>
         <div class="right menu">
-            <a href="/post/new" class="item">Escribe un post</a>
-            <a href="/login" class="item">INGRESAR</a>
+            <% if (!currentUser) { %>
+                <a href="/login" class="item">INGRESAR</a>
+            <% } else { %>
+                <a class="item"><%= currentUser.name %></a>
+                <a href="/logout" class="item">SALIR</a>
+            <% } %>
         </div>
     </div>
     

@@ -1,23 +1,27 @@
 const express               = require("express"),
-    Post                    = require("../models/post");
+    Post                    = require("../models/post"),
+    middleware          = require("../extras/middleware");
 
 const router = express.Router();
 
 
 // NEW - Show form to create new post
-router.get("/post/new", (req, res) => {
+router.get("/post/new", middleware.isLoggedIn, (req, res) => {
     // show form to create new post
     res.render("post/new");
 });
 
 // CREATE - Add new post to DB
-router.post("/post", (req, res) => {
+router.post("/post", middleware.isLoggedIn, (req, res) => {
     // create the new post using data from body parser, then redirect
     let newPost = {
         title: req.body.post.title,
         date: "Just Now",
-        body: req.body.post.body
-        // Add all data
+        body: req.body.post.body,
+        author: {
+            id: req.user._id,
+            name: req.user.name
+        }
     };
     Post.create(newPost, (err, post) => {
         if (err) {

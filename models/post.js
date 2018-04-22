@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 let postSchema = new mongoose.Schema({
     title: String,
     date: String,
-    body: String
+    body: String,
     // category: {
     //     id: {
     //         type: mongoose.Schema.Types.ObjectId,
@@ -11,13 +11,13 @@ let postSchema = new mongoose.Schema({
     //     },
     //     name: String
     // },
-    // author: {
-    //     id: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "User"
-    //     },
-    //     name: String
-    // },
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        name: String
+    }
     // comments: [
     //     {
     //         type: mongoose.Schema.Types.ObjectId,

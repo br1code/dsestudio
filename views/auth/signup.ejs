@@ -1,5 +1,28 @@
 <% include ../partials/header %>
 
-    <h1>Sign Up form</h1>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column" style="max-width: 500px;">
+            <h1 class="ui header">Registrarse</h1>
+            <form class="ui form" action="/signup" method="POST">
+                <div class="field">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" name="username" placeholder="Nombre de Usuario" required  autocomplete="off" spellcheck="false" autofocus>
+                </div>
+                <div class="field">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="name" placeholder="Nombre Completo" required  autocomplete="off" spellcheck="false">
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email" required  autocomplete="off" spellcheck="false">
+                </div>
+                <div class="field">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" placeholder="Contraseña" required  autocomplete="off" spellcheck="false">
+                </div>
+                <button class="ui button" type="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
 
 <% include ../partials/footer %>
