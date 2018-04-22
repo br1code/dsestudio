@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+    <div class="ui middle aligned center aligned grid">
+        <div class="column" style="max-width: 500px;">
+            <h2 class="ui header">Ingresar</h2>
+            <form class="ui form" action="/login" method="POST">
+                <div class="field">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" name="username" placeholder="Nombre de Usuario" required  autocomplete="off" spellcheck="false" autofocus>
+                </div>
+                <div class="field">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" placeholder="Contraseña" required  autocomplete="off" spellcheck="false">
+                </div>
+                <button class="ui button" type="submit">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+    <div class="ui middle aligned center aligned grid">
+        <div class="column" style="max-width: 500px;">
+            <h2 class="ui header">Nueva Publicación</h2>
+            <form class="ui form" action="/post" method="POST">
+                <div class="field">
+                    <label>Título</label>
+                    <input type="text" name="post[title]" placeholder="Título">
+                </div>
+                <div class="field">
+                    <label>Texto</label>
+                    <textarea name="post[body]"></textarea>
+                </div>
+                <button class="ui button" type="submit">Publicar</button>
+            </form>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

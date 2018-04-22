@@ -2,4 +2,33 @@
 
     <h1>Bienvenidos a DS Estudio</h1>
 
+    <div class="ui centered grid">
+        <div class="four wide column"> <!-- CATEGORY -->
+            <h1 style="text-align: center;">Categorias</h1>
+        </div>
+        <div class="eight wide column">
+            <h1 style="text-align: center;">Posts</h1>
+            <div class="ui main text container segment">
+                <div class="ui divided link items">
+                    <% posts.forEach(post => { %>
+                        <div class="item">
+                            <div class="ui tiny image">
+                                <img src="https://i.pinimg.com/736x/04/6e/91/046e91f77483a277a434bac9ae4885e2--ui-framework-user-experience-design.jpg">
+                            </div>
+                            <div class="content">
+                                <a class="header"><%= post.title %></a>
+                                <div class="description">
+                                    <p><%= post.body %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+        <div class="four wide column">
+                <h1 style="text-align: center;">Información</h1> <!-- HORARIO - NEWS -->
+        </div>
+    </div>
+
 <% include partials/footer %>
