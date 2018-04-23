@@ -1,10 +1,11 @@
 const express               = require("express"),
-    Post                    = require("../models/post");
+    Post                    = require("../models/post"),
+    Category                = require("../models/category");
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    // show all posts and the other things too
+    // show all posts
     Post.find({}, (err, posts) => {
         if (err) {
             console.log(`Error: ${err}`);

@@ -4,13 +4,8 @@ let postSchema = new mongoose.Schema({
     title: String,
     date: String,
     body: String,
-    // category: {
-    //     id: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "Category"
-    //     },
-    //     name: String
-    // },
+    category: String,
+    categoryFull: String,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

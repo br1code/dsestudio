@@ -1,5 +1,6 @@
 const express               = require("express"),
     Post                    = require("../models/post"),
+    Category                = require("../models/category"),
     middleware          = require("../extras/middleware");
 
 const router = express.Router();
@@ -7,29 +8,47 @@ const router = express.Router();
 
 // NEW - Show form to create new post
 router.get("/post/new", middleware.isLoggedIn, (req, res) => {
-    // show form to create new post
-    res.render("post/new");
+    // get categories and show form
+    Category.find({}, (err, categories) => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.send("Unable to fetch categories");
+        } else {
+            res.render("post/new", {categories});
+        }
+    });
 });
 
 // CREATE - Add new post to DB
 router.post("/post", middleware.isLoggedIn, (req, res) => {
-    // create the new post using data from body parser, then redirect
-    let newPost = {
-        title: req.body.post.title,
-        date: "Just Now",
-        body: req.body.post.body,
-        author: {
-            id: req.user._id,
-            name: req.user.name
-        }
-    };
-    Post.create(newPost, (err, post) => {
+    // find category to get fullname
+    Category.findOne({name: req.body.post.category}, (err, category) => {
         if (err) {
             console.log(`Error: ${err}`);
-            res.redirect("/");
+            res.redirect("/post/new");
         } else {
-            console.log(`Post created: ${post}`);
-            res.redirect("/");
+            // create new post using data from forms and DB
+            let newPost = {
+                title: req.body.post.title,
+                date: "Just Now",
+                body: req.body.post.body,
+                category: category.name,
+                categoryFull: category.fullname,
+                author: {
+                    id: req.user._id,
+                    name: req.user.name
+                }
+            };
+            // save new post
+            Post.create(newPost, (err, post) => {
+                if (err) {
+                    console.log(`Error: ${err}`);
+                    res.redirect("/");
+                } else {
+                    console.log(`Post created: ${post}`);
+                    res.redirect("/");
+                }
+            });
         }
     });
 });

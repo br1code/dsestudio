@@ -1,20 +1,15 @@
-const mongoose = require("tmongoose");
+const mongoose = require("mongoose");
 
 let categorySchema = new mongoose.Schema({
     name: String,
-    teacher: {
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Teacher"
-        },
-        name: String
-    },
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ]
+    fullname: String
+    // teacher: {
+    //     id: {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "Teacher"
+    //     },
+    //     name: String
+    // },
 });
 
 let categoryModel = mongoose.model("Category", categorySchema);

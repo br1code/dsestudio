@@ -1,7 +1,5 @@
 <% include partials/header %>
 
-    
-
     <div class="ui centered grid">
         <h1>Bienvenidos a DS Estudio</h1>
         <div class="four wide column"> <!-- CATEGORY -->
@@ -19,7 +17,7 @@
                             <div class="content">
                                 <a class="header"><%= post.title %></a>
                                 <div class="meta">
-                                    <%= post.author.name %>
+                                    <%= post.author.name %> - <%= post.categoryFull %>
                                 </div>
                                 <div class="description">
                                     <p><%= post.body %></p>
