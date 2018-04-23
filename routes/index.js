@@ -4,8 +4,8 @@ const express               = require("express"),
 
 const router = express.Router();
 
+// INDEX - Show all posts
 router.get("/", (req, res) => {
-    // show all posts
     Post.find({}, (err, posts) => {
         if (err) {
             console.log(`Error: ${err}`);

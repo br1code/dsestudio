@@ -1,4 +1,5 @@
-const express = require("express");
+const express               = require("express"),
+    Teacher                 = require("../models/teacher");
 
 const router = express.Router();
 
@@ -6,13 +7,26 @@ const router = express.Router();
 // INDEX - Show all teachers
 router.get("/teacher", (req, res) => {
     // find all teachers and show a list
-    res.render("teacher/list", {teachers: "insert teacher list here"});
+    Teacher.find({}, (rerr, teachers) => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.send("Unable to fetch teachers");
+        } else {
+            res.render("teacher/list", {teachers});
+        }
+    });
 });
 
 // SHOW - Show more info about one teacher
-router.get("/teacher/:id", (req, res) => {
-    // find teacher by id and show the full info
-    res.render("teacher/show", {teacher: "insert teacher info here"});
+router.get("/teacher/:name", (req, res) => {
+    Teacher.findOne({name: req.params.name}, (err, teacher) => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.send("Unable to show the teacher");
+        } else {
+            res.render("teacher/show", {teacher});
+        }
+    });
 });
 
 module.exports = router;

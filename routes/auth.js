@@ -5,14 +5,13 @@ const express           = require("express"),
 const router = express.Router();
 
 
-// Log In -----------------------------------------------------
-// just show form
+// LOG IN - Show form to authenticate
 router.get("/login", (req, res) => {
     res.render("auth/login");
 });
 
 
-// add post /login
+// LOG IN - Authenticate user using passport
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login"
@@ -20,13 +19,13 @@ router.post("/login", passport.authenticate("local", {
     console.log("User logged in");
 });
 
-// Sign Up -----------------------------------------------------
-// just show form
+
+// SIGN UP - Show form to register new user
 router.get("/signup", (req, res) => {
     res.render("auth/signup");
 })
 
-// add post signup
+// SIGN UP - Register new user using passport
 router.post("/signup", (req, res) => {
     let newUser = new User({
         username: req.body.username,
@@ -45,7 +44,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
-// Log Out -----------------------------------------------------
+// LOG OUT - Log out user using passport
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");

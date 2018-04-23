@@ -14,7 +14,8 @@ const indexRoutes           = require("./routes/index"),
     authRoutes              = require("./routes/auth"),
     categoryRoutes          = require("./routes/category"),
     postRoutes              = require("./routes/post"),
-    teacherRoutes           = require("./routes/teacher");
+    teacherRoutes           = require("./routes/teacher"),
+    commentRoutes           = require("./routes/comment");
 
 const app = express();
 
@@ -55,12 +56,14 @@ app.use(authRoutes);
 app.use(categoryRoutes);
 app.use(postRoutes);
 app.use(teacherRoutes);
+app.use(commentRoutes);
 
 // Handling missed/wrong page
 app.get("*", (req, res) => {
     res.redirect("/");
 });
 
+// Server listening
 app.listen(port, () => {
     console.log(`Server listening at port: ${port}`);
 });
