@@ -54,7 +54,6 @@ app.use(indexRoutes);
 app.use(authRoutes);
 app.use(categoryRoutes);
 app.use(postRoutes);
-app.use(categoryRoutes);
 app.use(teacherRoutes);
 
 // Handling missed/wrong page
