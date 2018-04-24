@@ -21,7 +21,7 @@ router.post("/post/:id/comment", middleware.isLoggedIn, (req, res) => {
                 } else {
                     // add extra data to the new comment
                     comment.author.id = req.user._id;
-                    comment.author.name = req.user.username;
+                    comment.author.name = req.user.name;
                     comment.date = "Just Now";
                     comment.save();
                     // add new comment to the post and save

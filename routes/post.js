@@ -56,7 +56,16 @@ router.post("/post", middleware.isLoggedIn, (req, res) => {
 // SHOW - Shows more info about one post
 router.get("/post/:id", (req, res) => {
     // find post by id, then populate the comments and finally, show it
-    res.render("post/show", {post: "insert post data here"});
+    Post.findById(req.params.id).
+    populate("comments").
+    exec((err, post) => {
+        if (err || !post) {
+            console.log(`Error: ${err}`);
+            res.redirect("/");
+        } else {
+            res.render("post/show", {post});
+        }
+    });
 });
 
 

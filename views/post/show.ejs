@@ -1,5 +1,45 @@
 <% include ../partials/header %>
 
-    <h1>Page to show full post</h1>
+
+    <div class="ui column stackable center page grid">
+        <div class="four wide column"></div><!-- empty div just padding -->
+        <div class="ui eight wide column">
+                <h1 class="ui header"><%= post.title %></h1>
+
+                <h5><a><%= post.author.name %></a> - <a href="/category/<%= post.category %>"><%= post.categoryFull %></a> - <%= post.date %></h5>
+            
+                <p><%= post.body %></p>
+            <div class="ui comments">
+                <!-- comments list-->
+                <h3 class="ui dividing header">Comentarios</h3>
+                <% post.comments.forEach(comment => { %>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://i.pinimg.com/736x/04/6e/91/046e91f77483a277a434bac9ae4885e2--ui-framework-user-experience-design.jpg">
+                        </a>
+                        <div class="content">
+                            <a class="author"><%= comment.author.name %></a>
+                            <div class="metadata">
+                                <span class="date"><%= comment.date %></span>
+                            </div>
+                            <div class="text"><%= comment.body %></div>
+                        </div>
+                    </div>
+                <% }) %>
+    
+                <!-- comment form-->
+                <form class="ui reply form" action="/post/<%= post._id %>/comment" method="POST">
+                    <div class="field">
+                        <textarea name="comment[body]" rows="3"></textarea>
+                        <button class="ui blue labeled submit icon button">
+                            <i class="icon edit"></i> Comentar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
 <% include ../partials/footer %>

@@ -21,12 +21,24 @@ router.get("/category", (req, res) => {
 
 // SHOW - Show posts of a particular category
 router.get("/category/:category", (req, res) => {
-    Post.find({category: req.params.category}, (err, posts) => {
+    Category.findOne({
+        name: req.params.category
+    }, (err, category) => {
         if (err) {
             console.log(`Error: ${err}`);
             res.redirect("/");
         } else {
-            res.render("category/posts", {posts});
+            Post.find({category: req.params.category}, (err, posts) => {
+                if (err) {
+                    console.log(`Error: ${err}`);
+                    res.redirect("/");
+                } else {
+                    res.render("category/posts", {
+                        posts,
+                        categoryFull: category.fullname
+                    });
+                }
+            });
         }
     });
 });

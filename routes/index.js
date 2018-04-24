@@ -11,7 +11,17 @@ router.get("/", (req, res) => {
             console.log(`Error: ${err}`);
             res.send("Unable to show posts");
         } else {
-            res.render("index", {posts});
+            Category.find({}, (err, categories) => {
+                if (err) {
+                    console.log(`Error: ${err}`);
+                    res.send("Unable to show categories");
+                } else {
+                    res.render("index", {
+                        posts,
+                        categories
+                    });
+                }
+            });
         }
     });
 });

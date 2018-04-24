@@ -4,20 +4,25 @@
         <h1>Bienvenidos a DS Estudio</h1>
         <div class="four wide column"> <!-- CATEGORY -->
             <h1 style="text-align: center;">Categorias</h1>
+            <ul class="ui divided items">
+                <% categories.forEach(category => { %>
+                    <li class="item"><a href="/category/<%= category.name %>"><%= category.fullname %></a></li>
+                <% }) %>
+            </ul>
         </div>
         <div class="eight wide column">
             <h1 style="text-align: center;">Posts</h1>
             <div class="ui main text container segment">
-                <div class="ui divided link items">
+                <div class="ui divided items">
                     <% posts.forEach(post => { %>
-                        <div class="item">
+                        <div class="item" href="/post/<%= post._id %>">
                             <div class="ui tiny image">
                                 <img src="https://i.pinimg.com/736x/04/6e/91/046e91f77483a277a434bac9ae4885e2--ui-framework-user-experience-design.jpg">
                             </div>
                             <div class="content">
-                                <a class="header"><%= post.title %></a>
+                                <a class="header" href="/post/<%= post._id %>"><%= post.title %></a>
                                 <div class="meta">
-                                    <%= post.author.name %> - <%= post.categoryFull %>
+                                    <%= post.author.name %> - <a href="/category/<%= post.category %>"><%= post.categoryFull %></a>
                                 </div>
                                 <div class="description">
                                     <p><%= post.body %></p>
@@ -32,7 +37,7 @@
             </div>
         </div>
         <div class="four wide column">
-                <h1 style="text-align: center;">Información</h1> <!-- HORARIO - NEWS -->
+                <h1 style="text-align: center;">Noticias</h1> <!-- HORARIO - NEWS -->
         </div>
     </div>
 

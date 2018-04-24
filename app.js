@@ -47,7 +47,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Custom middleware to provide currentUser and flash messages to all routes
+// Custom middleware to provide currentUser to all routes
 app.use(middleware.currentUser);
 
 // Routes configuration
