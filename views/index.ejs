@@ -4,11 +4,11 @@
         <h1>Bienvenidos a DS Estudio</h1>
         <div class="four wide column"> <!-- CATEGORY -->
             <h1 style="text-align: center;">Categorias</h1>
-            <ul class="ui divided items">
+            <div class="ui secondary massive vertical fluid menu" style="text-align: center;">
                 <% categories.forEach(category => { %>
-                    <li class="item"><a href="/category/<%= category.name %>"><%= category.fullname %></a></li>
+                    <a href="/category/<%= category.name %>" class="item"><%= category.fullname %></a>
                 <% }) %>
-            </ul>
+            </div>
         </div>
         <div class="eight wide column">
             <h1 style="text-align: center;">Posts</h1>
