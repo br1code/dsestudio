@@ -15,7 +15,9 @@ const indexRoutes           = require("./routes/index"),
     categoryRoutes          = require("./routes/category"),
     postRoutes              = require("./routes/post"),
     teacherRoutes           = require("./routes/teacher"),
-    commentRoutes           = require("./routes/comment");
+    commentRoutes           = require("./routes/comment"),
+    profileRoutes           = require("./routes/profile"),
+    userRoutes              = require("./routes/user");
 
 const app = express();
 
@@ -57,6 +59,8 @@ app.use(categoryRoutes);
 app.use(postRoutes);
 app.use(teacherRoutes);
 app.use(commentRoutes);
+app.use(profileRoutes);
+app.use(userRoutes);
 
 // Handling missed/wrong page
 app.get("*", (req, res) => {

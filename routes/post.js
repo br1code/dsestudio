@@ -45,7 +45,6 @@ router.post("/post", middleware.isLoggedIn, (req, res) => {
                     console.log(`Error: ${err}`);
                     res.redirect("/");
                 } else {
-                    console.log(`Post created: ${post}`);
                     res.redirect("/");
                 }
             });

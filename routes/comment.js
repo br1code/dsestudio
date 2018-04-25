@@ -27,10 +27,20 @@ router.post("/post/:id/comment", middleware.isLoggedIn, (req, res) => {
                     // add new comment to the post and save
                     post.comments.push(comment);
                     post.save();
-                    console.log(`Comment created successfully: ${comment}`);
                     res.redirect(`/post/${post._id}`);
                 }
             });
+        }
+    });
+});
+
+router.delete("/post/:id/comment/:id_comment", (req, res) => {
+    Comment.findByIdAndRemove(req.params.id_comment, err => {
+        if (err) {
+            console.log(`Error: ${err}`);
+            res.redirect("/");
+        } else {
+            res.redirect(`/post/${req.params.id}`);
         }
     });
 });

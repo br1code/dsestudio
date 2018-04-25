@@ -30,7 +30,8 @@ router.post("/signup", (req, res) => {
     let newUser = new User({
         username: req.body.username,
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        phone: req.body.phone
     });
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
@@ -38,7 +39,6 @@ router.post("/signup", (req, res) => {
             return res.redirect("/signup");
         }
         passport.authenticate("local")(req, res, () => {
-            console.log(`User sign up: ${user}`);
             res.redirect("/");
         });
     });

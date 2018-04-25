@@ -14,11 +14,12 @@
         <a href="/post/new" class="item">Escribe un post</a>
         <a href="/category" class="item">Categorias</a>
         <a href="/teacher" class="item">Profesores</a>
+        <a href="/profile" class="item">Alumnos</a>
         <div class="right menu">
             <% if (!currentUser) { %>
                 <a href="/login" class="item">INGRESAR</a>
             <% } else { %>
-                <a class="item"><%= currentUser.name %></a>
+                <a class="item" href="/user"><%= currentUser.name %></a>
                 <a href="/logout" class="item">SALIR</a>
             <% } %>
         </div>

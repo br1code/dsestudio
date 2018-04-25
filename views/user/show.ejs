@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+    <h1><%= user.name %> <span><a href="/user/edit">Editar perfil</a></span></h1> 
+
+    <img src="https://i.pinimg.com/736x/04/6e/91/046e91f77483a277a434bac9ae4885e2--ui-framework-user-experience-design.jpg">
+
+    <ul>
+        <li>Nombre de usuario: <%= user.username %></li>
+        <li>Email: <%= user.email %></li>
+        <li>Telefono: <%= user.phone %></li>
+    </ul>
+
+<% include ../partials/footer %>
