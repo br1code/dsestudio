@@ -1,28 +1,21 @@
 <% include ../partials/header %>
-
-    <div class="ui middle aligned center aligned grid">
-        <div class="column" style="max-width: 500px;">
-            <h2 class="ui header">Nueva Publicación</h2>
-            <form class="ui form" action="/post" method="POST">
-                <div class="field">
-                    <label>Título</label>
-                    <input type="text" name="post[title]" placeholder="Título">
-                </div>
-                <div class="field">
-                    <label>Texto</label>
-                    <textarea name="post[body]"></textarea>
-                </div>
-                <div class="field">
-                    <label>Categoría</label>
-                    <select name="post[category]">
-                    <% categories.forEach(category => { %>
-                        <option value="<%= category.name %>"><%= category.fullname %></option>
-                    <% }); %>
-                    </select>
-                </div>
-                <button class="ui button" type="submit">Publicar</button>
-            </form>
-        </div>
-    </div>
+    <link rel="stylesheet" href="/css/login.css">
+    <form class="text-center form-signin" id="newPost" action="/post" method="POST">
+        <h1 class="mb-3 font-weight-normal">Nueva Publicación</h1>
+        <!-- <label for="post[title]">Título de la publicación</label> -->
+        <input class="form-control postInput" type="text" name="post[title]" placeholder="Título de la publicación" required autofocus spellcheck="false" autocomplete="off">
+        <!-- <label for="post[body]">Texto de la publicación</label> -->
+        <textarea name="post[body]" class="form-control postInput" cols="30" rows="7" placeholder="Texto de la publicación" autofocus spellcheck="false" autocomplete="off"></textarea>
+        <!-- <label for="post[category]">Categoría</label> -->
+        <select name="post[category]" class="form-control postInput" required>
+            <option value="" selected disabled hidden>Seleccione la Categoría</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category.name %>"><%= category.fullname %></option>
+            <% }); %>
+        </select>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Publicar</button>
+        <p class="mt-3"><a href="/">Volver</a></p>
+        <p class="mt-3 mb-3 text-muted">&copy; Br1code 2018</p>
+    </form>
 
 <% include ../partials/footer %>
