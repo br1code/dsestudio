@@ -10,19 +10,44 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-    <div class="ui top fixed inverted menu" id="nav">
-        <a href="/" class="header item">DS Estudio</a>
-        <a href="/post/new" class="item">Escribe un post</a>
-        <a href="/category" class="item">Categorias</a>
-        <a href="#" class="item">Profesores</a> <!-- working on it -->
-        <a href="/profile" class="item">Alumnos</a>
-        <div class="right menu">
-            <% if (!currentUser) { %>
-                <a href="/login" class="item">INGRESAR</a>
-            <% } else { %>
-                <a class="item" href="/user"><%= currentUser.name %></a>
-                <a href="/logout" class="item">SALIR</a>
-            <% } %>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">DS Estudio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems" aria-controls="navbarItems" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarItems">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/post/new">Escribe un Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/category">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Alumnos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav justify-content-end ml-auto">
+                    <% if (!currentUser) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Ingresar</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="/user"><%= currentUser.name %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Salir</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
     
