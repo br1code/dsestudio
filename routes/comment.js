@@ -1,4 +1,5 @@
 const express           = require("express"),
+    moment              = require("moment"),
     User                = require("../models/user"),
     Comment             = require("../models/comment"),
     Post                = require("../models/post"),
@@ -22,7 +23,7 @@ router.post("/post/:id/comment", middleware.isLoggedIn, (req, res) => {
                     // add extra data to the new comment
                     comment.author.id = req.user._id;
                     comment.author.name = req.user.name;
-                    comment.date = "Just Now";
+                    comment.date = moment().calendar();
                     comment.save();
                     // add new comment to the post and save
                     post.comments.push(comment);

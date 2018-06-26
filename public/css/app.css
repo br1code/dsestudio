@@ -20,3 +20,8 @@ a#categories {
 .postLink:focus,.postLink:hover{
   color:#0085a1
 }
+
+.form-control:focus {
+  border-color: #575757 !important;
+  box-shadow: none !important;
+}

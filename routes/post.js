@@ -1,4 +1,5 @@
 const express               = require("express"),
+    moment                  = require("moment"),
     Post                    = require("../models/post"),
     Category                = require("../models/category"),
     middleware              = require("../extras/middleware");
@@ -30,7 +31,7 @@ router.post("/post", middleware.isLoggedIn, (req, res) => {
             // create new post using data from forms and DB
             let newPost = {
                 title: req.body.post.title,
-                date: "Just Now",
+                date: moment().calendar(),
                 body: req.body.post.body,
                 category: category.name,
                 categoryFull: category.fullname,
