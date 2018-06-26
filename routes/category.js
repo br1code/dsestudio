@@ -4,22 +4,8 @@ const express               = require("express"),
 
 const router = express.Router();
 
-// INDEX - Show all categories
-router.get("/category", (req, res) => {
-    // find categories in DB and show the list, each list have a link
-    // to show the posts of the category
-    Category.find({}, (err, categories) => {
-        if (err) {
-            console.log(`Error: ${err}`);
-            res.redirect("/");
-        } else {
-            res.render("category/list", {categories});
-        }
-    });
-});
 
-
-// SHOW - Show posts of a particular category
+// SHOW - Show posts and full info of a particular category
 router.get("/category/:category", (req, res) => {
     Category.findOne({
         name: req.params.category
@@ -33,7 +19,7 @@ router.get("/category/:category", (req, res) => {
                     console.log(`Error: ${err}`);
                     res.redirect("/");
                 } else {
-                    res.render("category/posts", {
+                    res.render("category/full", {
                         posts,
                         categoryFull: category.fullname
                     });

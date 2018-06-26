@@ -47,7 +47,13 @@ body {
   margin-bottom: 10px;
 }
 
+
+select.form-control:not([size]):not([multiple]) {
+  height: auto;
+}
+
 #login {
   display: flex;
   padding-top: 40px;
 }
+

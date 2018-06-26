@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DS Estudio</title>
-    <!-- <link rel="stylesheet" href="/css/semantic.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -24,13 +23,24 @@
                         <a class="nav-link" href="/post/new">Escribe un Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/category">Categorias</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">Profesores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">Alumnos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                        <div class="dropdown-menu" aria-labelledby="categories">
+                            <a href="/category/udi2" class="dropdown-item">Unidad de Definición Institucional 2</a>
+                            <a href="/category/estd" class="dropdown-item">Estadística</a>
+                            <a href="/category/ing2" class="dropdown-item">Inglés Técnico 2</a>
+                            <a href="/category/prob" class="dropdown-item">Problemáticas Socio Contemporaneas</a>
+                            <a href="/category/inde" class="dropdown-item">Innovación y Desarrollo Emprendedor</a>
+                            <a href="/category/ins2" class="dropdown-item">Ingeniería de Software 2</a>
+                            <a href="/category/bdd1" class="dropdown-item">Bases de Datos 1</a>
+                            <a href="/category/pro1" class="dropdown-item">Programación 1</a>
+                            <a href="/category/ppf1" class="dropdown-item">Práctica Profesionalizante 1</a>
+                        </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end ml-auto">

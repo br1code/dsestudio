@@ -2,6 +2,21 @@ body {
     padding-bottom: 20px;
   }
   
-  .navbar {
-    margin-bottom: 20px;
-  }
+.navbar {
+  margin-bottom: 20px;
+}
+
+a#categories {
+  cursor: pointer;
+}
+
+.postLink {
+  color:#212529;
+  -webkit-transition:all .2s;
+  -moz-transition:all .2s;
+  transition:all .2s
+}
+
+.postLink:focus,.postLink:hover{
+  color:#0085a1
+}
