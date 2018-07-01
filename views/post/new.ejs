@@ -9,9 +9,9 @@
         <!-- <label for="post[category]">Categoría</label> -->
         <select name="post[category]" class="form-control postInput" required>
             <option value="" selected disabled hidden>Seleccione la Categoría</option>
-            <% categories.forEach(category => { %>
-                <option value="<%= category.name %>"><%= category.fullname %></option>
-            <% }); %>
+            <% for (let category in categories) { %>
+                <option value="<%= category %>"><%= categories[category] %></option>
+            <% } %>
         </select>
         <button class="btn btn-lg btn-secondary btn-block" type="submit">Publicar</button>
         <p class="mt-3"><a href="/">Volver</a></p>

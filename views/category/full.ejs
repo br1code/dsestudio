@@ -1,5 +1,35 @@
 <% include ../partials/header %>
 
-    <h1>Aqui estará todo el contenido de <%= categoryFull %></h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="text-center"><%= category %></h1>
+                <% posts.forEach(post => { %>
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">
+                            <a class="postLink float-left mt-2" href="/category/<%= post.category %>">
+                                <%= post.categoryFull %>
+                            </a>
+                            <a href="/post/<%= post._id %>">
+                                <button type="button" class="btn btn-outline-dark float-right">Leer</button>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a class="postLink" href="/post/<%= post._id %>">
+                                <h5 class="card-title"><%= post.title %></h5>
+                            </a>
+                            <p class="card-text"><%= post.body.substr(0, 70) + "..." %></p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <a class="postLink" href="/profile/<%= post.author.id %>"><%= post.author.name %></a> - <%= post.date %>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
 
 <% include ../partials/footer %>

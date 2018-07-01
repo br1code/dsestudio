@@ -51,6 +51,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Custom middleware to provide currentUser to all routes
 app.use(middleware.currentUser);
+app.use(middleware.categoryData);
 
 // Routes configuration
 app.use(indexRoutes);

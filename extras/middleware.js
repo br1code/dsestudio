@@ -1,4 +1,5 @@
 const mongoose      = require("mongoose");
+const categories = require("./categoryData");
 
 // Check if user is logged in
 let isLoggedIn = (req, res, next) => {
@@ -15,7 +16,13 @@ let currentUser = (req, res, next) => {
     next();
 };
 
+let categoryData = (req, res, next) => {
+    res.locals.categories = categories;
+    next();
+}
+
 module.exports = {
     isLoggedIn,
-    currentUser
+    currentUser,
+    categoryData
 };

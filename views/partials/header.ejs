@@ -31,15 +31,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
                         <div class="dropdown-menu" aria-labelledby="categories">
-                            <a href="/category/udi2" class="dropdown-item">Unidad de Definición Institucional 2</a>
-                            <a href="/category/estd" class="dropdown-item">Estadística</a>
-                            <a href="/category/ing2" class="dropdown-item">Inglés Técnico 2</a>
-                            <a href="/category/prob" class="dropdown-item">Problemáticas Socio Contemporaneas</a>
-                            <a href="/category/inde" class="dropdown-item">Innovación y Desarrollo Emprendedor</a>
-                            <a href="/category/ins2" class="dropdown-item">Ingeniería de Software 2</a>
-                            <a href="/category/bdd1" class="dropdown-item">Bases de Datos 1</a>
-                            <a href="/category/pro1" class="dropdown-item">Programación 1</a>
-                            <a href="/category/ppf1" class="dropdown-item">Práctica Profesionalizante 1</a>
+                            <% for (let category in categories) { %>
+                                <a href="/category/<%= category %>" class="dropdown-item">
+                                    <%= categories[category] %>
+                                </a>
+                            <% } %>
                         </div>
                     </li>
                 </ul>

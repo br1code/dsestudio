@@ -3,52 +3,41 @@ const express               = require("express"),
     Post                    = require("../models/post"),
     Category                = require("../models/category"),
     middleware              = require("../extras/middleware");
+    categoryData            = require("../extras/categoryData");
 
 const router = express.Router();
 
 
 // NEW - Show form to create new post
 router.get("/post/new", middleware.isLoggedIn, (req, res) => {
-    // get categories and show form
-    Category.find({}, (err, categories) => {
-        if (err) {
-            console.log(`Error: ${err}`);
-            res.send("Unable to fetch categories");
-        } else {
-            res.render("post/new", {categories});
-        }
-    });
+    res.render("post/new");
 });
+
 
 // CREATE - Add new post to DB
 router.post("/post", middleware.isLoggedIn, (req, res) => {
-    // find category to get fullname
-    Category.findOne({name: req.body.post.category}, (err, category) => {
+    // validate category
+    if (!categoryData[req.body.post.category]) {
+        return res.redirect("/");
+    }
+    let newPost = {
+        title: req.body.post.title,
+        date: moment().calendar(),
+        body: req.body.post.body,
+        category: req.body.post.category,
+        categoryFull: categoryData[req.body.post.category],
+        author: {
+            id: req.user._id,
+            name: req.user.name
+        }
+    };
+    // save new post
+    Post.create(newPost, (err, post) => {
         if (err) {
             console.log(`Error: ${err}`);
-            res.redirect("/post/new");
+            res.redirect("/");
         } else {
-            // create new post using data from forms and DB
-            let newPost = {
-                title: req.body.post.title,
-                date: moment().calendar(),
-                body: req.body.post.body,
-                category: category.name,
-                categoryFull: category.fullname,
-                author: {
-                    id: req.user._id,
-                    name: req.user.name
-                }
-            };
-            // save new post
-            Post.create(newPost, (err, post) => {
-                if (err) {
-                    console.log(`Error: ${err}`);
-                    res.redirect("/");
-                } else {
-                    res.redirect("/");
-                }
-            });
+            res.redirect("/");
         }
     });
 });
