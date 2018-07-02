@@ -28,7 +28,7 @@ const port = process.env.PORT || 3000;
 
 // Mongoose configuration
 // mongoose.connect("mongodb://localhost/dsestudio");
-mongoose.connect("mongodb://<dsestudiouser>:<chocolatada09>@ds161960.mlab.com:61960/dsestudio");
+mongoose.connect("mongodb://dsestudiouser:chocolatada09@ds161960.mlab.com:61960/dsestudio");
 
 // Express configuration
 app.set("view engine", "ejs");
