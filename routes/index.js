@@ -1,6 +1,5 @@
 const express               = require("express"),
-    Post                    = require("../models/post"),
-    Category                = require("../models/category");
+    Post                    = require("../models/post");
 
 const router = express.Router();
 
@@ -11,9 +10,7 @@ router.get("/", (req, res) => {
             console.log(`Error: ${err}`);
             res.send("Unable to show posts");
         } else {
-            res.render("index", {
-                posts
-            });
+            res.render("index", {posts});
         }
     });
 });

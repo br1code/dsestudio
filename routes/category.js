@@ -1,6 +1,5 @@
 const express               = require("express"),
     Post                    = require("../models/post"),
-    Category                = require("../models/category");
     categoryData            = require("../extras/categoryData");
 
 const router = express.Router();

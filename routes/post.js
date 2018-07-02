@@ -1,8 +1,7 @@
 const express               = require("express"),
     moment                  = require("moment"),
     Post                    = require("../models/post"),
-    Category                = require("../models/category"),
-    middleware              = require("../extras/middleware");
+    middleware              = require("../extras/middleware"),
     categoryData            = require("../extras/categoryData");
 
 const router = express.Router();

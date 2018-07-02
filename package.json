@@ -1,7 +1,7 @@
 {
   "name": "dsestudio",
   "version": "1.0.0",
-  "description": "El objetivo de este proyecto es crear una página web en donde los alumnos (luego profesores)  puedan entrar y :",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
